@@ -159,7 +159,17 @@ function unix.tmpname()
 end
 
 function unix.current_user()
-   return os.getenv("USER")
+   local user = os.getenv("USER")
+   if user then
+      return user
+   end
+   local pd = io.popen("whoami", "r")
+   if not pd then
+      return ""
+   end
+   user = pd:read("*l")
+   pd:close()
+   return user
 end
 
 function unix.export_cmd(var, val)
