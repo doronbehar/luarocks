@@ -775,8 +775,9 @@ function cfg.init(lua_data, project_dir, warning)
          local new_path, new_cpath, new_bin = {}, {}, {}
          local function add_tree_to_paths(tree)
             local lua_path, lib_path, bin_path = make_paths_from_tree(tree)
-            table.insert(new_path, "/?.lua" .. lua_path)
-            table.insert(new_path, "/?/init.lua" .. lua_path)
+            table.insert(new_path, "./?.lua")
+            table.insert(new_path, "./?/init.lua")
+            table.insert(new_path, lua_path)
             table.insert(new_cpath, lib_path.."/?."..cfg.lib_extension)
             table.insert(new_bin, bin_path)
          end
