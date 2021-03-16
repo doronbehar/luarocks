@@ -147,9 +147,10 @@ end
 
 --- Driver function for the builtin build back-end.
 -- @param rockspec table: the loaded rockspec.
+-- @param buildconfig string: build configuration from cli.
 -- @return boolean or (nil, string): true if no errors occurred,
 -- nil and an error message otherwise.
-function builtin.run(rockspec, no_install)
+function builtin.run(rockspec, no_install, buildconfig)
    assert(rockspec:type() == "rockspec")
    local compile_object, compile_library, compile_static_library
 

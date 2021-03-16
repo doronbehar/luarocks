@@ -36,6 +36,10 @@ function cmd_build.add_to_parser(parser)
       "rockspec. Allows to specify a different branch to fetch. Particularly "..
       'for "dev" rocks.')
       :argname("<name>")
+   cmd:option("--buildconfig", "Specify a config file with extra options "..
+      "to be passed to the build - such as cmake / make options. See: "..
+      'https://github.com/luarocks/luarocks/wiki/buildconfig.lua-file-format')
+      :argname("<name>")
    parser:flag("--pin", "Create a luarocks.lock file listing the exact "..
       "versions of each dependency found for this rock (recursively), "..
       "and store it in the rock's directory. "..
@@ -126,6 +130,7 @@ function cmd_build.command(args)
       build_only_deps = not not (args.only_deps and not args.pack_binary_rock),
       namespace = args.namespace,
       branch = args.branch,
+      buildconfig = args.buildconfig,
       verify = not not args.verify,
       check_lua_versions = not not args.check_lua_versions,
       pin = not not args.pin,

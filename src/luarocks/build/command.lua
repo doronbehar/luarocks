@@ -8,9 +8,10 @@ local cfg = require("luarocks.core.cfg")
 
 --- Driver function for the "command" build back-end.
 -- @param rockspec table: the loaded rockspec.
+-- @param buildconfig string: build configuration from cli.
 -- @return boolean or (nil, string): true if no errors occurred,
 -- nil and an error message otherwise.
-function command.run(rockspec, not_install)
+function command.run(rockspec, not_install, buildconfig)
    assert(rockspec:type() == "rockspec")
 
    local build = rockspec.build
